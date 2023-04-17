@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+.product {
+  width: 80vw;
+  height: 500px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  box-shadow: 0px 1px 15px 0px #d4d4d4;
+  border-radius: 7px;
+}
+.product .img {
+  position: relative;
+  width: 40%;
+  height: 95%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  border: 1px solid #DDD;
+}
+.product .img img {
+  position: absolute;
+  width: 100%;
+}
+.product .description {
+  width: 50%;
+  margin-left: 10px;
+  position: relative;
+}
+
+.product .description .ref {
+color: #333;
+margin-top: 15px;
+margin-bottom: 15px;
+margin-right: 15px;
+}
+.product .description .ref span {
+  
+  margin-right: 10px;
+}
+.product .description .product-name {
+  color: #333;
+  font-size: 25px;
+}
+.product .description .price {
+  color: #54a3ef;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  
+
+}
+.btns button {
+  margin: 0 10px;
+}
+button a {
+  color: white;
+  text-decoration: none;
+  padding:0 20px;
+}

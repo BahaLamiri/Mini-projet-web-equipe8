@@ -1,0 +1,214 @@
+<div class="container mt-5">
+  <p class="ajouter">Ajouter un Produit</p>
+
+  <!-- <form method="POST" [formGroup]="form">
+    <div class="group">
+      <label class="form-label" for="ref">Reference</label>
+      <input
+        id="idproduit"
+        class="form-control"
+        type="text"
+        placeholder="Reference"
+        formControlName="idproduit"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="nomproduit">Nom du Produit</label>
+      <input
+        id="nomproduit"
+        class="form-control"
+        type="text"
+        placeholder="Nom du Produit"
+        formControlName="nomproduit"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="idcategorie">Categorie</label>
+      <input
+        id="idcategorie"
+        class="form-control"
+        type="text"
+        placeholder="Categorie"
+        formControlName="categorie"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="prix">Prix</label>
+      <input
+        id="prix"
+        class="form-control"
+        type="text"
+        placeholder="Prix"
+        formControlName="prix"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="desc">Description</label>
+      <input
+        id="desc"
+        class="form-control"
+        type="text"
+        placeholder="Description"
+        formControlName="description"
+      />
+    </div>
+
+    <div class="group">
+      <label class="form-label" for="disp">Source de l'image</label>
+      <input
+        id="disp"
+        class="form-control"
+        type="text"
+        placeholder="Source de l'image"
+        formControlName="source"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="stock">Stock</label>
+      <input
+        id="stock"
+        class="form-control"
+        type="text"
+        placeholder="Stock"
+        formControlName="stock"
+      />
+    </div>
+
+    <div class="group">
+      <label class="form-label disp">Disponibilite</label>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        formControlName="disponibilite"
+        value="o"
+      />
+      <span class="oui">Oui</span>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        formControlName="disponibilite"
+        value="n"
+      />
+      <span class="non">Non</span>
+    </div>
+    <div class="btns">
+      <input type="reset" value="Annuler" />
+      <input (click)="addProduct()" type="button" value="Ajouter" />
+      <input
+        [disabled]="!form.valid"
+        (click)="addProdut()"
+        type="submit"
+        value="Ajouter"
+      />
+    </div>
+  </form> -->
+  <form #productForm="ngForm" (ngSubmit)="addProduct(productForm.value)">
+    <div class="group">
+      <label class="form-label" for="ref">Reference</label>
+      <input
+        id="idproduit"
+        class="form-control"
+        type="text"
+        placeholder="Reference"
+        ngModel
+        name="idproduit"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="nomproduit">Nom du Produit</label>
+      <input
+        id="nomproduit"
+        class="form-control"
+        type="text"
+        placeholder="Nom du Produit"
+        ngModel
+        name="nomproduit"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="idcategorie">Categorie</label>
+      <input
+        id="idcategorie"
+        class="form-control"
+        type="text"
+        placeholder="Categorie"
+        ngModel
+        name="categorie"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="prix">Prix</label>
+      <input
+        id="prix"
+        class="form-control"
+        type="text"
+        placeholder="Prix"
+        ngModel
+        name="prix"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="desc">Description</label>
+      <input
+        id="desc"
+        class="form-control"
+        type="text"
+        placeholder="Description"
+        ngModel
+        name="description"
+      />
+    </div>
+
+    <div class="group">
+      <label class="form-label" for="img">Source de l'image</label>
+      <input
+        id="img"
+        class="form-control"
+        type="text"
+        placeholder="Source de l'image"
+        ngModel
+        name="img"
+      />
+    </div>
+    <div class="group">
+      <label class="form-label" for="stock">Stock</label>
+      <input
+        id="stock"
+        class="form-control"
+        type="text"
+        placeholder="Stock"
+        ngModel
+        name="stock"
+      />
+    </div>
+
+    <div class="group">
+      <label class="form-label disp">Disponibilite</label>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        ngModel
+        name="disponibilite"
+        value="o"
+      />
+      <span class="oui">Oui</span>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        ngModel
+        name="disponibilite"
+        value="n"
+      />
+      <span class="non">Non</span>
+    </div>
+    <div class="btns">
+      <input type="reset" value="Annuler" />
+      <!-- <button>Ajouter</button> -->
+      <input type="submit" value="Ajouter" />
+    </div>
+  </form>
+</div>
