@@ -1,0 +1,60 @@
+<div class="main-heading">
+  <h2>Souris</h2>
+</div>
+<div class="container">
+  <div class="content">
+    <div
+      class="card"
+      *ngFor="let item of productList"
+      routerLink="/details/{{ item.id }}"
+    >
+      <img [src]="item.prodimage" alt="Card image cap" />
+      <div class="info">
+        <h3>{{ item.prix }} DT</h3>
+        <p>{{ item.nom }}</p>
+      </div>
+    </div>
+
+    <!--
+    <div class="card">
+      <img
+        src="https://sbsinformatique.com/6800-large_default/souris-gaming-glorious-model-o-wireless-blanc.jpg"
+        alt="Card image cap"
+      />
+      <div class="info">
+        <h3>450.00DT</h3>
+        <p>Nom de souris</p>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        src="https://sbsinformatique.com/6800-large_default/souris-gaming-glorious-model-o-wireless-blanc.jpg"
+        alt="Card image cap"
+      />
+      <div class="info">
+        <h3>450.00DT</h3>
+        <p>Nom de souris</p>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        src="https://sbsinformatique.com/6800-large_default/souris-gaming-glorious-model-o-wireless-blanc.jpg"
+        alt="Card image cap"
+      />
+      <div class="info">
+        <h3>450.00DT</h3>
+        <p>Nom de souris</p>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        src="https://sbsinformatique.com/6800-large_default/souris-gaming-glorious-model-o-wireless-blanc.jpg"
+        alt="Card image cap"
+      />
+      <div class="info">
+        <h3>450.00DT</h3>
+        <p>Nom de souris</p>
+      </div>
+    </div> -->
+  </div>
+</div>

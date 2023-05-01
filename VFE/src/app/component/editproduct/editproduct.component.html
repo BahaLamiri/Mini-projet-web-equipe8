@@ -1,0 +1,273 @@
+<div class="container mt-3">
+
+  <p class="ajouter">Modifier les informations du Produit</p>
+
+  <form #productForm="ngForm" (ngSubmit)="editProduct(productForm.value)">
+    <div class="group grp1">
+      <label class="form-label" for="ref">ID Produit</label>
+      <input
+        id="ref"
+        class="form-control"
+        type="text"
+        placeholder="Reference"
+        name="idproduit"
+        ngModel
+        #idproduit="ngModel"
+        pattern="[p]{1}[0-9]+"
+        maxlength="4"
+        minlength="2"
+        required
+        [(ngModel)]="details.id"
+      />
+      <div *ngIf="idproduit.touched && !idproduit.valid">
+        <div *ngIf="idproduit.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir l'ID
+        </div>
+        <div *ngIf="idproduit.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un identifiant valide
+        </div>
+        <!-- <div *ngIf="idproduit.errors?.['minlength']">ID > 1</div> -->
+      </div>
+    </div>
+    <div class="group grp2">
+      <label class="form-label" for="nom">Nom du Produit</label>
+      <input
+        id="nom"
+        class="form-control"
+        type="text"
+        placeholder="Nom du Produit"
+        name="nomproduit"
+        ngModel
+        #nomproduit="ngModel"
+        minlength="3"
+        maxlength="20"
+        pattern="[A-Za-z]+[A-Za-z0-9 ]*"
+        required
+        [(ngModel)]="details.nom"
+      />
+      <div *ngIf="nomproduit.touched && !nomproduit.valid">
+        <div *ngIf="nomproduit.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir le nom de produit
+        </div>
+        <div *ngIf="nomproduit.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un nom valide
+        </div>
+        <div *ngIf="nomproduit.errors?.['minlength']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Le nom du produit doit contenir au moins trois lettres. Veuillez
+          choisir un nom plus long pour votre produit
+        </div>
+      </div>
+    </div>
+    <div class="group grp3">
+      <label class="form-label" for="cat">Catégorie</label>
+      <input
+        id="cat"
+        class="form-control"
+        type="text"
+        placeholder="Categorie"
+        name="categorie"
+        ngModel
+        #categorie="ngModel"
+        maxlength="4"
+        minlength="2"
+        pattern="[c]{1}[0-9]+"
+        required
+        [(ngModel)]="details.idcategorie"
+      />
+      <div *ngIf="categorie.touched && !categorie.valid">
+        <div *ngIf="categorie.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la categorie
+        </div>
+        <div *ngIf="categorie.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une categorie valide
+        </div>
+        <!-- <div *ngIf="categorie.errors?.['minlength']">
+          Le long de nom de categorie doit etre supérieur a 2
+        </div> -->
+      </div>
+    </div>
+    <div class="group grp4">
+      <label class="form-label" for="prix">Prix</label>
+      <input
+        id="prix"
+        class="form-control"
+        type="text"
+        placeholder="Prix"
+        name="prix"
+        ngModel
+        #prix="ngModel"
+        maxlength="9"
+        pattern="[0-9]+[.]?[0-9]*"
+        required
+        [(ngModel)]="details.prix"
+      />
+      <div *ngIf="prix.touched && !prix.valid">
+        <div *ngIf="prix.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir le prix
+        </div>
+        <div *ngIf="prix.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une input valide
+        </div>
+      </div>
+    </div>
+    <div class="group grp5">
+      <label class="form-label" for="desc">Description</label>
+      <input
+        id="desc"
+        class="form-control"
+        type="text"
+        placeholder="Description"
+        name="description"
+        ngModel
+        #description="ngModel"
+        pattern="[A-Za-z]+[A-Za-z0-9 ]*"
+        required
+        [(ngModel)]="details.description"
+      />
+      <div *ngIf="description.touched && !description.valid">
+        <div *ngIf="description.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la description
+        </div>
+        <div *ngIf="description.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une description valide
+        </div>
+      </div>
+    </div>
+
+    <div class="group grp6">
+      <label class="form-label" for="disp">Source de l'image</label>
+      <input
+        id="disp"
+        class="form-control"
+        type="text"
+        placeholder="Source de l'image"
+        name="img"
+        ngModel
+        #img="ngModel"
+        required
+        [(ngModel)]="details.prodimage"
+      />
+      <div *ngIf="img.touched && !img.valid">
+        <i
+          class="fa fa-exclamation-circle"
+          style="font-size: 18px; color: red; margin-right: 5px"
+        ></i>
+        Saisir le chemin de l'image
+      </div>
+    </div>
+    <div class="group grp7">
+      <label class="form-label" for="stock">Stock</label>
+      <input
+        id="stock"
+        class="form-control"
+        type="text"
+        placeholder="Stock"
+        name="stock"
+        ngModel
+        #stock="ngModel"
+        pattern="[0-9]+"
+        required
+        [(ngModel)]="details.stock"
+      />
+      <div *ngIf="stock.touched && !stock.valid">
+        <div *ngIf="stock.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la stock
+        </div>
+        <div *ngIf="stock.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une input valide
+        </div>
+      </div>
+    </div>
+
+    <div class="group grp8">
+      <label class="form-label disp">Disponibilité</label>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        name="disponibilite"
+        ngModel
+        #disponibilite="ngModel"
+        value="o"
+        required
+        [(ngModel)]="details.disponibilite"
+      />
+      <span class="oui">Oui</span>
+      <input
+        class=""
+        type="radio"
+        placeholder="Disponibilite"
+        name="disponibilite"
+        ngModel
+        #disponibilite="ngModel"
+        value="n"
+        required
+        [(ngModel)]="details.disponibilite"
+      />
+      <span class="non">Non</span>
+      <div class="rad-req" *ngIf="!disponibilite.valid">
+        <i
+          class="fa fa-exclamation-circle"
+          style="font-size: 18px; color: red; margin-right: 5px"
+        ></i>
+        Obligatoire
+      </div>
+    </div>
+    <div class="btns">
+      <input type="reset" value="Fermer" />
+      <input type="submit" [disabled]="!productForm.valid" value="Modifier" />
+    </div>
+  </form>
+</div>

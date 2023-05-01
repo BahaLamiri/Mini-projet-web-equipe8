@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+.product {
+  width: 80vw;
+  height: 500px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  box-shadow: 0px 1px 15px 0px #d4d4d4;
+  border-radius: 7px;
+  background-color: white;
+}
+.product::after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) skew(0, -10deg);
+  width: 300%;
+  height: 100%;
+  background-color: rgb(19, 170, 170);
+  border-radius: 50%;
+  z-index: -1;
+  animation: waving 7s ease-in-out infinite alternate;
+}
+@keyframes waving {
+  from {
+    transform: translateX(-50%) skew(0, -10deg);
+  }
+  to {
+    transform: translateX(-30%) skew(10deg, 0deg);
+  }
+}
+
+.product .img {
+  position: relative;
+  width: 40%;
+  height: 95%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  border: 1px solid #ddd;
+  animation: to_right 1s ease-out forwards;
+  overflow: hidden;
+}
+.product .img img:hover {
+  transform: rotate(-5deg) scale(1.1);
+}
+.product .img img {
+  position: absolute;
+  width: 100%;
+  transition: 0.3s;
+}
+.product .description {
+  width: 50%;
+  margin-left: 10px;
+  position: relative;
+}
+.product .description .des {
+  animation: to_left 1s ease-out forwards;
+}
+.product .description .disponibilite {
+  animation: to_left 1.05s ease-out forwards;
+}
+
+.product .description .ref {
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  animation: to_left 0.85s ease-out forwards;
+}
+
+.product .description .ref span {
+  margin-right: 10px;
+}
+.product .description .product-name {
+  color: #333;
+  font-size: 25px;
+  animation: to_left 0.9s ease-out forwards;
+}
+.product .description .price {
+  color: #54a3ef;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  animation: to_left 0.95s ease-out forwards;
+}
+.btns {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+.btns .btn-danger {
+  animation: to_left 0.8s ease-out forwards;
+}
+.btns .btn-primary {
+  animation: to_left 0.85s ease-out forwards;
+}
+.btns button {
+  margin: 0 10px;
+}
+button a {
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+}
+
+@keyframes to_top {
+  0% {
+    transform: translateY(5vw);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+@keyframes to_left {
+  0% {
+    transform: translateX(10vw);
+    opacity: 0;
+  }
+  50% {
+    opacity: 30%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}

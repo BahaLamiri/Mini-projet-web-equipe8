@@ -1,0 +1,39 @@
+<!-- <div class="product">
+  <div class="img"></div>
+  <div class="description">
+    <div class="ref"><span>Référence : </span><span></span></div>
+    <p class="product-name"></p>
+    <div class="price"></div>
+    <p class="des"></p>
+    <div class="btn-modifier">
+      <button><a routerLink="/editproduct/:id">Modifier</a></button>
+    </div>
+  </div>
+</div> -->
+
+<div class="product">
+  <div class="img">
+    <img [src]="productDetail.prodimage" alt="" />
+  </div>
+  <div class="description">
+    <div class="ref">
+      <span>Référence : </span><span>{{ productDetail.id }}</span>
+    </div>
+    <p class="product-name">{{ productDetail.nom }}</p>
+    <div class="price">{{ productDetail.prix }}DT</div>
+    <p class="des" style="--dur: 1.3s">{{ productDetail.description }}</p>
+    <p class="disponibilite">
+      Disponibilite :
+      <span *ngIf="productDetail.disponibilite === 'o'">Oui</span>
+      <span *ngIf="productDetail.disponibilite != 'o'">Non</span>
+    </p>
+    <div class="btns">
+      <button class="btn btn-danger" (click)="delete(productDetail.id)">
+        <a>Supprimer</a>
+      </button>
+      <button class="btn btn-primary">
+        <a routerLink="/editproduct/{{ productDetail.id }}">Modifier</a>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="main-heading">
+  <h2>{{ nomcat }}</h2>
+</div>
+<div class="container">
+  <div class="content">
+    <div
+      class="card"
+      *ngFor="let item of productList"
+      routerLink="/details/{{ item.id }}"
+    >
+      <img [src]="item.prodimage" alt="Card image cap" />
+      <div class="info">
+        <h3>{{ item.prix }} DT</h3>
+        <p>{{ item.nom }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="main-heading">
+  <h2>Catégorie</h2>
+</div>
+<div class="categorie">
+  <div class="imgs-container">
+    <a routerLink="/article/{{ cat.id }}" *ngFor="let cat of categorytList">
+      <div class="box">
+        <img [src]="cat.image" alt="" />
+        <div class="caption">
+          <h4>{{ cat.nom }}</h4>
+        </div>
+        <input type="text" name="souris" value="1" hidden />
+      </div>
+    </a>
+  </div>
+  <a routerLink="/addcategory" class="ajouter">Gérer Catégorie</a>
+</div>
