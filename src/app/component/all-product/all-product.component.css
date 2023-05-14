@@ -43,3 +43,13 @@ td .modifier:hover {
 .fa-trash-o:hover {
   color: rgb(216, 0, 0);
 }
+
+.alert {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.alert .fa-times-circle {
+  cursor: pointer;
+}

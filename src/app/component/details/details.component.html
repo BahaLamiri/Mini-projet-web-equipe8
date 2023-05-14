@@ -10,6 +10,7 @@
     </div>
   </div>
 </div> -->
+
 <div class="product">
   <div class="img">
     <img [src]="productDetail.prodimage" alt="" />
@@ -20,13 +21,18 @@
     </div>
     <p class="product-name">{{ productDetail.nom }}</p>
     <div class="price">{{ productDetail.prix }}DT</div>
-    <p class="des">{{ productDetail.description }}</p>
+    <p class="des" style="--dur: 1.3s">{{ productDetail.description }}</p>
+    <p class="disponibilite">
+      Disponibilite :
+      <span *ngIf="productDetail.disponibilite === 'o'">Oui</span>
+      <span *ngIf="productDetail.disponibilite != 'o'">Non</span>
+    </p>
     <div class="btns">
+      <button class="btn btn-danger" (click)="delete(productDetail.id)">
+        <a>Supprimer</a>
+      </button>
       <button class="btn btn-primary">
         <a routerLink="/editproduct/{{ productDetail.id }}">Modifier</a>
-      </button>
-      <button class="btn btn-danger">
-        <a>Supprimer</a>
       </button>
     </div>
   </div>

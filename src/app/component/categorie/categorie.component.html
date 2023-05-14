@@ -1,85 +1,16 @@
 <div class="main-heading">
-  <h2>Categorie</h2>
+  <h2>Catégories</h2>
 </div>
 <div class="categorie">
-  <div class="container"></div>
   <div class="imgs-container">
-    <!-- Souris -->
     <a routerLink="/article/{{ cat.id }}" *ngFor="let cat of categorytList">
-      <!-- <a  (click)="sendProductById(cat.id)"  routerLink="/article/{{cat.id}}" *ngFor="let cat of categorytList"> -->
-
       <div class="box">
         <img [src]="cat.image" alt="" />
         <div class="caption">
           <h4>{{ cat.nom }}</h4>
         </div>
-        <input type="text" name="souris" value="1" hidden />
       </div>
     </a>
-
-    <!-- <div class="box">
-      <img
-        src="https://res.cloudinary.com/lmn/image/upload/c_limit,h_360,w_640/e_sharpen:100/f_auto,fl_lossy,q_auto/v1/gameskinnyc/r/o/c/roccat-pyro-keyboard-review-4a4d0.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Clavier</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://www.techweekmag.com/storage/2021/02/Best-gaming-headsets-2021.jpeg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Casque</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://www.gamespot.com/a/uploads/original/1591/15918215/3796344-iskur2.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Chaise</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://www.pcspecialist.ie/images/landing/pcs/gaming-pc/gaming_pc_headline_pcs.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Desktop</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://news.ultimatebattle.in/wp-content/uploads/2021/06/Top-10-Best-Gaming-Laptops-in-India.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Laptop</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://www.gigabyte.com/FileUpload/Global/KeyFeature/1653/innergigabyteimages/kv-bg.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Moniteur</h4>
-      </div>
-    </div>
-    <div class="box">
-      <img
-        src="https://geeko-media.lesoir.be/wp-content/uploads/2023/02/dualsense-edge-1068x580.jpg"
-        alt=""
-      />
-      <div class="caption">
-        <h4>Accessoires</h4>
-      </div>
-    </div> -->
   </div>
-  <a routerLink="/addcategory" class="ajouter">Ajouter Catégorie</a>
+  <a routerLink="/addcategory" class="ajouter">Gérer Catégorie</a>
 </div>

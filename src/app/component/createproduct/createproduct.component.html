@@ -1,120 +1,39 @@
-<div class="container mt-5">
+<div class="container mt-3">
   <p class="ajouter">Ajouter un Produit</p>
 
-  <!-- <form method="POST" [formGroup]="form">
-    <div class="group">
-      <label class="form-label" for="ref">Reference</label>
-      <input
-        id="idproduit"
-        class="form-control"
-        type="text"
-        placeholder="Reference"
-        formControlName="idproduit"
-      />
-    </div>
-    <div class="group">
-      <label class="form-label" for="nomproduit">Nom du Produit</label>
-      <input
-        id="nomproduit"
-        class="form-control"
-        type="text"
-        placeholder="Nom du Produit"
-        formControlName="nomproduit"
-      />
-    </div>
-    <div class="group">
-      <label class="form-label" for="idcategorie">Categorie</label>
-      <input
-        id="idcategorie"
-        class="form-control"
-        type="text"
-        placeholder="Categorie"
-        formControlName="categorie"
-      />
-    </div>
-    <div class="group">
-      <label class="form-label" for="prix">Prix</label>
-      <input
-        id="prix"
-        class="form-control"
-        type="text"
-        placeholder="Prix"
-        formControlName="prix"
-      />
-    </div>
-    <div class="group">
-      <label class="form-label" for="desc">Description</label>
-      <input
-        id="desc"
-        class="form-control"
-        type="text"
-        placeholder="Description"
-        formControlName="description"
-      />
-    </div>
-
-    <div class="group">
-      <label class="form-label" for="disp">Source de l'image</label>
-      <input
-        id="disp"
-        class="form-control"
-        type="text"
-        placeholder="Source de l'image"
-        formControlName="source"
-      />
-    </div>
-    <div class="group">
-      <label class="form-label" for="stock">Stock</label>
-      <input
-        id="stock"
-        class="form-control"
-        type="text"
-        placeholder="Stock"
-        formControlName="stock"
-      />
-    </div>
-
-    <div class="group">
-      <label class="form-label disp">Disponibilite</label>
-      <input
-        class=""
-        type="radio"
-        placeholder="Disponibilite"
-        formControlName="disponibilite"
-        value="o"
-      />
-      <span class="oui">Oui</span>
-      <input
-        class=""
-        type="radio"
-        placeholder="Disponibilite"
-        formControlName="disponibilite"
-        value="n"
-      />
-      <span class="non">Non</span>
-    </div>
-    <div class="btns">
-      <input type="reset" value="Annuler" />
-      <input (click)="addProduct()" type="button" value="Ajouter" />
-      <input
-        [disabled]="!form.valid"
-        (click)="addProdut()"
-        type="submit"
-        value="Ajouter"
-      />
-    </div>
-  </form> -->
   <form #productForm="ngForm" (ngSubmit)="addProduct(productForm.value)">
     <div class="group">
-      <label class="form-label" for="ref">Reference</label>
+      <label class="form-label" for="idproduit">ID Produit</label>
       <input
         id="idproduit"
         class="form-control"
         type="text"
-        placeholder="Reference"
-        ngModel
+        placeholder="ID Produit"
         name="idproduit"
+        ngModel
+        #idproduit="ngModel"
+        [pattern]="idPattern"
+        maxlength="4"
+        minlength="2"
+        required
       />
+      <div *ngIf="idproduit.touched && !idproduit.valid">
+        <div *ngIf="idproduit.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir l'ID
+        </div>
+        <div *ngIf="idproduit.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un identifiant valide
+        </div>
+        <!-- <div *ngIf="idproduit.errors?.['minlength']">ID > 1</div> -->
+      </div>
     </div>
     <div class="group">
       <label class="form-label" for="nomproduit">Nom du Produit</label>
@@ -123,9 +42,38 @@
         class="form-control"
         type="text"
         placeholder="Nom du Produit"
-        ngModel
         name="nomproduit"
+        ngModel
+        #nomproduit="ngModel"
+        minlength="3"
+        maxlength="2000"
+        pattern="^[A-Za-z][\w\s-]*$|^[^0-9\W][\s\S]*$"
+        required
       />
+      <div *ngIf="nomproduit.touched && !nomproduit.valid">
+        <div *ngIf="nomproduit.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir le nom de produit
+        </div>
+        <div *ngIf="nomproduit.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un nom valide
+        </div>
+        <div *ngIf="nomproduit.errors?.['minlength']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Le nom du produit doit contenir au moins trois lettres. Veuillez
+          choisir un nom plus long pour votre produit
+        </div>
+      </div>
     </div>
     <div class="group">
       <label class="form-label" for="idcategorie">Categorie</label>
@@ -134,9 +82,33 @@
         class="form-control"
         type="text"
         placeholder="Categorie"
-        ngModel
         name="categorie"
+        ngModel
+        #categorie="ngModel"
+        maxlength="4"
+        minlength="2"
+        pattern="[c]{1}[0-9]+"
+        required
       />
+      <div *ngIf="categorie.touched && !categorie.valid">
+        <div *ngIf="categorie.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la categorie
+        </div>
+        <div *ngIf="categorie.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une categorie valide
+        </div>
+        <!-- <div *ngIf="categorie.errors?.['minlength']">
+          Le long de nom de categorie doit etre supérieur a 2
+        </div> -->
+      </div>
     </div>
     <div class="group">
       <label class="form-label" for="prix">Prix</label>
@@ -145,9 +117,29 @@
         class="form-control"
         type="text"
         placeholder="Prix"
-        ngModel
         name="prix"
+        ngModel
+        #prix="ngModel"
+        maxlength="9"
+        pattern="[0-9]+[.]?[0-9]*"
+        required
       />
+      <div *ngIf="prix.touched && !prix.valid">
+        <div *ngIf="prix.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir le prix
+        </div>
+        <div *ngIf="prix.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une input valide
+        </div>
+      </div>
     </div>
     <div class="group">
       <label class="form-label" for="desc">Description</label>
@@ -156,9 +148,28 @@
         class="form-control"
         type="text"
         placeholder="Description"
-        ngModel
         name="description"
+        ngModel
+        #description="ngModel"
+        pattern="^[A-Za-z][\w\s-]*$|^[^0-9\W][\s\S]*$"
+        required
       />
+      <div *ngIf="description.touched && !description.valid">
+        <div *ngIf="description.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la description
+        </div>
+        <div *ngIf="description.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une description valide
+        </div>
+      </div>
     </div>
 
     <div class="group">
@@ -168,9 +179,18 @@
         class="form-control"
         type="text"
         placeholder="Source de l'image"
-        ngModel
         name="img"
+        ngModel
+        #img="ngModel"
+        required
       />
+      <div *ngIf="img.touched && !img.valid">
+        <i
+          class="fa fa-exclamation-circle"
+          style="font-size: 18px; color: red; margin-right: 5px"
+        ></i>
+        Saisir le chemin de l'image
+      </div>
     </div>
     <div class="group">
       <label class="form-label" for="stock">Stock</label>
@@ -179,9 +199,28 @@
         class="form-control"
         type="text"
         placeholder="Stock"
-        ngModel
         name="stock"
+        ngModel
+        #stock="ngModel"
+        pattern="[0-9]+"
+        required
       />
+      <div *ngIf="stock.touched && !stock.valid">
+        <div *ngIf="stock.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir la stock
+        </div>
+        <div *ngIf="stock.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir une input valide
+        </div>
+      </div>
     </div>
 
     <div class="group">
@@ -190,25 +229,35 @@
         class=""
         type="radio"
         placeholder="Disponibilite"
-        ngModel
         name="disponibilite"
+        ngModel
+        #disponibilite="ngModel"
         value="o"
+        required
       />
       <span class="oui">Oui</span>
       <input
         class=""
         type="radio"
         placeholder="Disponibilite"
-        ngModel
         name="disponibilite"
+        ngModel
+        #disponibilite="ngModel"
         value="n"
+        required
       />
       <span class="non">Non</span>
+      <div class="rad-req" *ngIf="!disponibilite.valid">
+        <i
+          class="fa fa-exclamation-circle"
+          style="font-size: 18px; color: red; margin-right: 5px"
+        ></i>
+        Obligatoire
+      </div>
     </div>
     <div class="btns">
       <input type="reset" value="Annuler" />
-      <!-- <button>Ajouter</button> -->
-      <input type="submit" value="Ajouter" />
+      <input type="submit" value="Ajouter" [disabled]="!productForm.valid" />
     </div>
   </form>
 </div>

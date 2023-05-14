@@ -1,6 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ValidationErrors,
+  FormControl,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/serviecs/product.service';
 
 @Component({
@@ -9,36 +18,41 @@ import { ProductService } from 'src/app/serviecs/product.service';
   styleUrls: ['./createproduct.component.css'],
 })
 export class CreateproductComponent {
-  form!: FormGroup;
   constructor(
     private http: HttpClient,
     private build: FormBuilder,
-    private serv: ProductService
+    private serv: ProductService,
+    private route: Router
   ) {}
 
-  ngOnInit(): void {
-    this.form = this.build.group({
-      idproduit: ['', [Validators.required]],
-      categorie: ['', [Validators.required]],
-      nomproduit: ['', [Validators.required]],
-      prix: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      img: ['', [Validators.required]],
-      disponibilite: ['', [Validators.required]],
-      stock: ['', [Validators.required]],
-    });
-  }
-  // addProduct(product: any) {
-  //   const model = this.form.value;
-  //   // this.serv.createProduct(model).subscribe((result) => {
-  //   //   alert('Succes');
-  //   // });
-  //   console.log(product);
-  // }
+  idproduit: any;
+  nom: any;
+  cat: any;
+  prix: any;
+  desc: any;
+  img: any;
+  stock: any;
+  disponibilite: any;
+  idPattern = '[p]{1}[0-9]+';
+  ngOnInit(): void {}
   addProduct(product: any) {
     console.log(product);
-    this.serv.createProduct(product).subscribe((data) => {
-      console.log(data);
-    });
+
+    this.serv.createProduct(product).subscribe(
+      (data) => {
+        Swal.fire({
+          title: 'Produit Ajouté',
+          icon: 'success',
+        });
+        this.ngOnInit();
+        this.route.navigate(["allProduct"]);
+      },
+      (err) => {
+        Swal.fire({
+          title: 'Verifier vos données !',
+          icon: 'error',
+        });
+      }
+    );
   }
 }

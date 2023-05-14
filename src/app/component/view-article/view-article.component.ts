@@ -9,6 +9,7 @@ import { ProductService } from 'src/app/serviecs/product.service';
 })
 export class ViewArticleComponent {
   productList: any;
+  nomcat: any;
   id: any;
   constructor(private serv: ProductService, private activeR: ActivatedRoute) {}
   ngOnInit(): void {
@@ -18,6 +19,8 @@ export class ViewArticleComponent {
   getProductById(id: any) {
     this.serv.getArticles(id).subscribe((result) => {
       this.productList = result.data;
+      this.nomcat = result.nomcat;
+
       console.log(this.productList);
     });
   }

@@ -54,3 +54,29 @@ form {
 .btns input:disabled {
   background-color: #0055ff4f;
 }
+
+.form-control.ng-touched.ng-invalid {
+  border: 1px solid red;
+  transition: 0.5s;
+  box-shadow: 0px 0px 7px 2px #ff686833;
+}
+.form-control.ng-touched.ng-invalid::placeholder {
+  color: red;
+}
+.form-control.ng-touched.ng-invalid + div {
+  color: red;
+  margin-top: 10px;
+}
+.rad-req {
+  color: red;
+}
+
+.alert {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.alert .fa-times-circle {
+  cursor: pointer;
+}

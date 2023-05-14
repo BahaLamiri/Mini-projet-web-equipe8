@@ -35,6 +35,7 @@
 }
 .categorie .imgs-container .box img {
   max-width: 100%;
+  min-height: 214px;
   transition: 0.3s;
 }
 .categorie .imgs-container .box .caption {
@@ -60,4 +61,23 @@
   margin: 30px auto;
   text-decoration: none;
   text-transform: uppercase;
+  animation: to_left 1s ease-out forwards;
+}
+
+@keyframes to_right {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  50% {
+    opacity: 30%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+.imgs-container a {
+  animation: to_bottom 1s ease-out forwards;
 }

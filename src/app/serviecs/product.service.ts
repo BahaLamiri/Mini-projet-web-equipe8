@@ -46,10 +46,22 @@ export class ProductService {
       product
     );
   }
+  public createCategorie(categorie: any) {
+    return this.http.post(
+      'http://localhost/php_rest/api/post/createCategorie.php',
+      categorie
+    );
+  }
 
   public delete(id: any) {
     return this.http.delete(
       'http://localhost/php_rest/api/post/delete.php?id=' + id
+    );
+  }
+  public editProduct(product: any, id: any) {
+    return this.http.put(
+      'http://localhost/php_rest/api/post/update.php?id=' + id,
+      product
     );
   }
 }

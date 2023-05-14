@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 Nous avons installé les bibliothèques Bootstrap, Fontawesome et Sweetalert2. Voici les commandes que nous avons utilisées pour l'installation :
 
 Pour Bootstrap : "npm install bootstrap"
 Pour Sweetalert2 : "npm install sweetalert2"
+=======
+Nous avons installé les bibliothèques Bootstrap, Fontawesome et Sweetalert2. Voici les commandes que nous avons utilisées pour l'installation :
+
+Pour Bootstrap : "npm install bootstrap"
+Pour Sweetalert2 : "npm install sweetalert2"
+>>>>>>> 8e4cb17 (La dernière version de projet)
 Pour Fontawesome : "npm i @fortawesome/angular-fontawesome"

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import {
-  FormsModule,
   FormGroup,
   ɵInternalFormsSharedModule,
+  ReactiveFormsModule,
+  Validator,
 } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,9 +17,10 @@ import { AllProductComponent } from './component/all-product/all-product.compone
 import { CreateproductComponent } from './component/createproduct/createproduct.component';
 import { EditproductComponent } from './component/editproduct/editproduct.component';
 import { AddcategoryComponent } from './component/addcategory/addcategory.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { ViewArticleComponent } from './component/view-article/view-article.component';
-
+import { FormsModule } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { SweetAlertArrayOptions } from 'sweetalert2';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,7 @@ import { ViewArticleComponent } from './component/view-article/view-article.comp
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

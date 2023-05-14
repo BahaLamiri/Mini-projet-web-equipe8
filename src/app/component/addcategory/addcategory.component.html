@@ -1,41 +1,103 @@
-<div class="container mt-5">
-    <p class="ajouter">information du catégorie</p>
-  
-    <form>
-      <div class="group">
-        <label class="form-label" for="ref">Reference</label>
-        <input
-          id="ref"
-          class="form-control"
-          type="text"
-          placeholder="Reference"
-          name="reference"
-        />
+<div class="container">
+  <p class="ajouter">Ajouter une catégorie</p>
+
+  <form #categorieFrom="ngForm" (ngSubmit)="addCategorie(categorieFrom.value)">
+    <div class="group">
+      <label class="form-label" for="ref">ID catégorie</label>
+      <input
+        id="ref"
+        class="form-control"
+        type="text"
+        placeholder="ID categorie"
+        name="idcategorie"
+        ngModel
+        #idcategorie="ngModel"
+        pattern="[c]{1}[0-9]+"
+        maxlength="4"
+        minlength="2"
+        required
+      />
+      <div *ngIf="idcategorie.touched && !idcategorie.valid">
+        <div *ngIf="idcategorie.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir l'ID
+        </div>
+        <div *ngIf="idcategorie.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un identifiant valide
+        </div>
+        <!-- <div *ngIf="idproduit.errors?.['minlength']">ID > 1</div> -->
       </div>
-      <div class="group">
-        <label class="form-label" for="nom">Nom du catégorie</label>
-        <input
-          id="nom"
-          class="form-control"
-          type="text"
-          placeholder="Nom du catégorie"
-          name="nom"
-        />
+    </div>
+    <div class="group">
+      <label class="form-label" for="nom">Nom du catégorie</label>
+      <input
+        id="nom"
+        class="form-control"
+        type="text"
+        placeholder="Nom du catégorie"
+        name="nomcategorie"
+        ngModel
+        #nomcategorie="ngModel"
+        required
+        pattern="[A-Za-z]+[A-Za-z0-9 ]*"
+        minlength="3"
+        maxlength="20"
+      />
+      <div *ngIf="nomcategorie.touched && !nomcategorie.valid">
+        <div *ngIf="nomcategorie.errors?.['required']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir le nom de catégorie
+        </div>
+        <div *ngIf="nomcategorie.errors?.['pattern']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Saisir un nom valide
+        </div>
+        <div *ngIf="nomcategorie.errors?.['minlength']">
+          <i
+            class="fa fa-exclamation-circle"
+            style="font-size: 18px; color: red; margin-right: 5px"
+          ></i>
+          Le nom du catégorie doit contenir au moins trois lettres. Veuillez
+          choisir un nom plus long pour votre Catégorie
+        </div>
       </div>
-      <div class="group">
-        <label class="form-label" for="disp">Source de l'image</label>
-        <input
-          id="disp"
-          class="form-control"
-          type="text"
-          placeholder="Source de l'image"
-          name="source"
-        />
+    </div>
+    <div class="group">
+      <label class="form-label" for="disp">Source de l'image</label>
+      <input
+        id="disp"
+        class="form-control"
+        type="text"
+        placeholder="Source de l'image"
+        name="catimage"
+        ngModel
+        #catimage="ngModel"
+        required
+      />
+      <div *ngIf="catimage.touched && !catimage.valid">
+        <i
+          class="fa fa-exclamation-circle"
+          style="font-size: 18px; color: red; margin-right: 5px"
+        ></i>
+        Saisir le chemin de l'image
       </div>
-      <div class="btns">
-        <input type="reset" value="Fermer" />
-        <input type="submit" value="Ajouter" />
-      </div>
-    </form>
-  </div>
-  
+    </div>
+    <div class="btns">
+      <input type="reset" value="Annuler" />
+      <input type="submit" value="Ajouter" [disabled]="!categorieFrom.valid" />
+    </div>
+  </form>
+</div>
