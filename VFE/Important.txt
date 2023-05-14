@@ -10,3 +10,7 @@ Pour Bootstrap : "npm install bootstrap"
 Pour Sweetalert2 : "npm install sweetalert2"
 >>>>>>> 8e4cb17 (La dernière version de projet)
 Pour Fontawesome : "npm i @fortawesome/angular-fontawesome"
+
+
+Je suis désolé madame d'avoir accidentellement supprimé le dossier src.
+La date de la première publication est dans la capture
