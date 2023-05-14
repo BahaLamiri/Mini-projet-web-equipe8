@@ -38,7 +38,6 @@ export class EditproductComponent {
 
   editProduct(product: any) {
     let id = this.activeRoute.snapshot.paramMap.get('id');
-
     console.log(product, id);
     this.serv.editProduct(product, id).subscribe((data) => {
       Swal.fire({

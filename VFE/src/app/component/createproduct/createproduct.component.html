@@ -46,8 +46,8 @@
         ngModel
         #nomproduit="ngModel"
         minlength="3"
-        maxlength="20"
-        pattern="[A-Za-z]+[A-Za-z0-9 ]*"
+        maxlength="2000"
+        pattern="^[A-Za-z][\w\s-]*$|^[^0-9\W][\s\S]*$"
         required
       />
       <div *ngIf="nomproduit.touched && !nomproduit.valid">
@@ -151,7 +151,7 @@
         name="description"
         ngModel
         #description="ngModel"
-        pattern="[A-Za-z]+[A-Za-z0-9 ]*"
+        pattern="^[A-Za-z][\w\s-]*$|^[^0-9\W][\s\S]*$"
         required
       />
       <div *ngIf="description.touched && !description.valid">

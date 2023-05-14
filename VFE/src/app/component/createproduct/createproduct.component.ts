@@ -44,6 +44,8 @@ export class CreateproductComponent {
           title: 'Produit Ajouté',
           icon: 'success',
         });
+        this.ngOnInit();
+        this.route.navigate(["allProduct"]);
       },
       (err) => {
         Swal.fire({

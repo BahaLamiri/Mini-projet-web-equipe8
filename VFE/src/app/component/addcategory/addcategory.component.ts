@@ -35,6 +35,8 @@ export class AddcategoryComponent {
           title: 'Categorie Ajouté ',
           icon: 'success',
         });
+        this.ngOnInit();
+        this.route.navigate([""])
       },
       (err) => {
         Swal.fire({
